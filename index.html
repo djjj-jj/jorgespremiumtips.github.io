@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jorge's Premium Tips</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700;1,900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --navy: #002244;
+  --navy-mid: #003366;
+  --white: #ffffff;
+  --off-white: #F0F4F8;
+  --muted: rgba(255,255,255,0.5);
+  --muted-dark: rgba(0,34,68,0.48);
+  --rule: rgba(255,255,255,0.12);
+  --rule-dark: rgba(0,34,68,0.11);
+  --accent: #2A6DB5;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Times New Roman', Times, serif;
+  background: var(--white);
+  color: var(--navy);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 3.5rem;
+  background: rgba(0,34,68,0.97);
+  backdrop-filter: blur(12px);
+  border-bottom: 0.5px solid var(--rule);
+}
+.nav-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--white);
+  text-decoration: none;
+}
+.nav-logo span { font-style: italic; color: rgba(255,255,255,0.45); }
+.nav-right { display: flex; align-items: center; gap: 1.25rem; }
+.nav-x-link {
+  display: flex;
+  align-items: center;
+  color: rgba(255,255,255,0.5);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-x-link:hover { color: var(--white); }
+.nav-x-link svg { width: 17px; height: 17px; fill: currentColor; }
+.nav-contact {
+  color: rgba(255,255,255,0.6);
+  text-decoration: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 0.5px solid rgba(255,255,255,0.25);
+  padding: 0.45rem 1.1rem;
+  transition: color 0.2s, border-color 0.2s;
+}
+.nav-contact:hover { color: var(--white); border-color: rgba(255,255,255,0.6); }
+
+/* ── SECTION 1: HERO — navy ── */
+.hero {
+  min-height: 100vh;
+  background: var(--navy);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 9rem 2rem 6rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%, rgba(42,109,181,0.15) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-logo-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 2rem;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.1s forwards;
+  border: 1.5px solid rgba(255,255,255,0.15);
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 8vw, 7rem);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--white);
+  opacity: 0;
+  animation: fadeUp 0.7s 0.2s forwards;
+}
+.hero h1 em { font-style: italic; color: rgba(255,255,255,0.38); }
+.hero-tagline {
+  margin-top: 1.25rem;
+  font-size: clamp(0.95rem, 2vw, 1.15rem);
+  font-weight: 300;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.04em;
+  font-style: italic;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.35s forwards;
+}
+.hero-join {
+  margin-top: 2.5rem;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.5s forwards;
+}
+.hero-pitch {
+  margin-top: 3.5rem;
+  max-width: 480px;
+  opacity: 0;
+  animation: fadeUp 0.7s 0.65s forwards;
+}
+.hero-pitch p {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.38);
+  line-height: 1.9;
+}
+.hero-pitch p + p { margin-top: 0.5rem; }
+.hero-pitch strong { color: rgba(255,255,255,0.65); font-weight: 400; font-style: italic; }
+
+/* ── SECTION 2: STEPS — white ── */
+.steps-section {
+  background: var(--white);
+  padding: 6rem 0 7rem;
+  border-top: 0.5px solid var(--rule-dark);
+}
+.steps-inner { max-width: 860px; margin: 0 auto; padding: 0 4rem; }
+.steps-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 3rem;
+  line-height: 1.2;
+}
+.step-item {
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+  gap: 2.5rem;
+  padding: 3rem 0;
+  border-bottom: 0.5px solid var(--rule-dark);
+  align-items: start;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.step-item:last-child { border-bottom: none; }
+.step-item.visible { opacity: 1; transform: translateY(0); }
+.step-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 900;
+  font-style: italic;
+  color: rgba(0,34,68,0.08);
+  line-height: 1;
+  padding-top: 0.2rem;
+  user-select: none;
+}
+.step-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+.step-body h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 0.9rem;
+}
+.step-body p {
+  font-size: 0.95rem;
+  color: var(--muted-dark);
+  max-width: 500px;
+  line-height: 1.9;
+}
+
+/* ── SECTION 3: PRICING — navy ── */
+.pricing-section {
+  background: var(--navy);
+  padding: 7rem 4rem;
+  border-top: 0.5px solid var(--rule);
+}
+.pricing-inner { max-width: 860px; margin: 0 auto; }
+.section-label-light {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 1rem;
+}
+.section-label-dark {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+.section-title-light {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--white);
+  margin-bottom: 0.75rem;
+}
+.section-sub-light {
+  font-size: 0.95rem;
+  color: rgba(255,255,255,0.45);
+  max-width: 480px;
+  line-height: 1.85;
+  margin-bottom: 2.5rem;
+}
+.pricing-table {
+  width: 100%;
+  border: 0.5px solid var(--rule);
+}
+.pricing-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border-bottom: 0.5px solid var(--rule);
+}
+.pricing-row:last-child { border-bottom: none; }
+.pricing-row.header { background: rgba(255,255,255,0.07); }
+.pricing-cell {
+  padding: 1rem 1.5rem;
+  font-size: 0.9rem;
+  border-right: 0.5px solid var(--rule);
+  color: rgba(255,255,255,0.75);
+}
+.pricing-row.header .pricing-cell {
+  color: rgba(255,255,255,0.35);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+.pricing-cell:last-child { border-right: none; }
+.pricing-row:not(.header) .pricing-cell:last-child { color: #6BAAFF; font-weight: 600; }
+.pricing-row:not(.header):nth-child(even) { background: rgba(255,255,255,0.04); }
+
+.entry-block {
+  margin-top: 2rem;
+  padding: 2rem 2.5rem;
+  background: rgba(255,255,255,0.06);
+  border: 0.5px solid var(--rule);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+.entry-block-text h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.3rem;
+}
+.entry-block-text p {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.45);
+  max-width: 440px;
+  line-height: 1.8;
+}
+
+/* ── SECTION 4: TWITTER — white ── */
+.twitter-section {
+  background: var(--white);
+  padding: 6rem 4rem;
+  text-align: center;
+  border-top: 0.5px solid var(--rule-dark);
+}
+.twitter-inner { max-width: 480px; margin: 0 auto; }
+.section-title-dark {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 3vw, 2.1rem);
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 2rem;
+}
+.btn-x {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: var(--navy);
+  color: var(--white);
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+}
+.btn-x svg { width: 20px; height: 20px; fill: var(--white); }
+.btn-x:hover { background: var(--navy-mid); transform: translateY(-1px); }
+
+/* BUTTONS */
+.btn-primary {
+  display: inline-block;
+  background: var(--white);
+  color: var(--navy);
+  padding: 0.9rem 2.75rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  cursor: pointer;
+  border: none;
+}
+.btn-primary:hover { background: var(--off-white); transform: translateY(-1px); }
+
+.btn-white-outline {
+  display: inline-block;
+  background: transparent;
+  color: var(--white);
+  padding: 0.85rem 2.25rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 1px solid rgba(255,255,255,0.4);
+  transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  cursor: pointer;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.btn-white-outline:hover {
+  border-color: var(--white);
+  background: rgba(255,255,255,0.07);
+  transform: translateY(-1px);
+}
+
+/* FOOTER */
+footer {
+  background: var(--navy);
+  border-top: 0.5px solid var(--rule);
+  padding: 1.75rem 3.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+.footer-logo {
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--white);
+}
+.footer-logo span { font-style: italic; color: rgba(255,255,255,0.35); }
+footer p { font-family: 'DM Sans', sans-serif; font-size: 0.75rem; color: rgba(255,255,255,0.22); }
+
+/* MODAL */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,10,20,0.75);
+  z-index: 200;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  backdrop-filter: blur(4px);
+}
+.modal-overlay.open { display: flex; }
+.modal {
+  background: var(--white);
+  max-width: 640px;
+  width: 100%;
+  max-height: 85vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+.modal-header {
+  background: var(--navy);
+  padding: 1.75rem 2rem;
+  flex-shrink: 0;
+}
+.modal-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.2rem;
+}
+.modal-header p {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.4);
+}
+.modal-close {
+  position: absolute;
+  top: 1.25rem; right: 1.25rem;
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.45);
+  cursor: pointer;
+  font-size: 1.25rem;
+  line-height: 1;
+  padding: 0.25rem;
+  transition: color 0.2s;
+}
+.modal-close:hover { color: var(--white); }
+.modal-body {
+  overflow-y: auto;
+  padding: 2rem;
+  flex: 1;
+}
+.modal-body h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 1.5rem 0 0.6rem;
+}
+.modal-body h3:first-child { margin-top: 0; }
+.modal-body p {
+  font-size: 0.83rem;
+  color: var(--muted-dark);
+  line-height: 1.95;
+  margin-bottom: 0.75rem;
+}
+.modal-body strong { color: var(--navy); font-weight: 600; }
+.terms-item {
+  display: grid;
+  grid-template-columns: 1rem 1fr;
+  gap: 0.75rem;
+  padding: 0.85rem 0;
+  border-bottom: 0.5px solid var(--rule-dark);
+  align-items: start;
+}
+.terms-item:last-child { border-bottom: none; }
+.terms-item-marker {
+  color: var(--accent);
+  font-size: 0.75rem;
+  padding-top: 0.2rem;
+  font-family: 'DM Sans', sans-serif;
+}
+.terms-item p { margin-bottom: 0; }
+.modal-footer {
+  padding: 1.5rem 2rem;
+  border-top: 0.5px solid var(--rule-dark);
+  background: var(--off-white);
+  flex-shrink: 0;
+}
+.checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+.checkbox-row input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-top: 0.15rem;
+  accent-color: var(--navy);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.checkbox-row label {
+  font-size: 0.83rem;
+  color: var(--muted-dark);
+  line-height: 1.6;
+  cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+}
+.checkbox-row label strong { color: var(--navy); }
+.btn-proceed {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background: var(--navy);
+  color: var(--white);
+  padding: 0.85rem 2.25rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  opacity: 0.28;
+  pointer-events: none;
+  transition: background 0.2s, opacity 0.25s, transform 0.15s;
+}
+.btn-proceed.active { opacity: 1; pointer-events: auto; }
+.btn-proceed.active:hover { background: var(--navy-mid); transform: translateY(-1px); }
+
+/* ANIMATIONS */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* MOBILE */
+@media (max-width: 680px) {
+  nav { padding: 1rem 1.5rem; }
+  .hero { padding: 8rem 1.75rem 5rem; }
+  .steps-inner { padding: 0 1.75rem; }
+  .step-item { grid-template-columns: 3.5rem 1fr; gap: 1.5rem; }
+  .pricing-section { padding: 5rem 1.75rem; }
+  .twitter-section { padding: 4rem 1.75rem; }
+  .pricing-row { grid-template-columns: 1fr 1fr; }
+  .pricing-row .pricing-cell:nth-child(2),
+  .pricing-row.header .pricing-cell:nth-child(2) { display: none; }
+  footer { padding: 1.5rem 1.75rem; flex-direction: column; align-items: flex-start; }
+  .entry-block { flex-direction: column; align-items: flex-start; }
+  .btn-white-outline { width: 100%; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#">Jorge's <span>Premium Tips</span></a>
+  <div class="nav-right">
+    <!-- UPDATE: replace # with your X/Twitter profile URL -->
+    <a href="https://x.com/jorgepick3ns" target="_blank" rel="noopener" class="nav-x-link" aria-label="Follow on X">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.91-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+    <!-- UPDATE: replace # with your Telegram contact link e.g. https://t.me/yourusername -->
+    <a href="https://t.me/jorgepickens" target="_blank" rel="noopener" class="nav-contact">Contact</a>
+  </div>
+</nav>
+
+<!-- ── SECTION 1: HERO — navy ── -->
+<div class="hero">
+  <!-- PROFILE PICTURE: remove the comment tags below once you add logo.png to the same folder -->
+  <!-- <img src="QLyMm.png" alt="Jorge's Premium Tips" class="hero-logo-img"> -->
+  <h1>Jorge's<br><em>Premium Tips.</em></h1>
+  <p class="hero-tagline">Result driven tipping service.</p>
+  <div class="hero-join">
+    <button class="btn-primary" onclick="openModal()">Join now</button>
+  </div>
+  <div class="hero-pitch">
+    <p>Tired of paying for a season pass that never delivers?</p>
+    <p><strong>No subscription. No lock in.</strong> You only pay when the tips make you money.</p>
+  </div>
+</div>
+
+<!-- ── SECTION 2: STEPS — white ── -->
+<div class="steps-section">
+  <div class="steps-inner">
+    <h2 class="steps-heading">How it works.</h2>
+
+    <div class="step-item">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <p class="step-label">Step one</p>
+        <h3>Your first week, covered.</h3>
+        <p>A $50 joining fee gets you in and covers your first week of tips. After that, you only pay on weeks the tips deliver.</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <p class="step-label">Step two</p>
+        <h3>Tips delivered privately and securely.</h3>
+        <p>Every tip comes straight to you via Telegram.</p>
+      </div>
+    </div>
+
+    <div class="step-item">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <p class="step-label">Step three</p>
+        <h3>Pay only on results.</h3>
+        <p>At the end of each week, fees are calculated on the published tip performance. Nothing owed on quiet weeks. The cycle resets every Monday.</p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── SECTION 3: PRICING — navy ── -->
+<div class="pricing-section">
+  <div class="pricing-inner">
+    <p class="section-label-light">Pricing</p>
+    <h2 class="section-title-light">Performance based fees.</h2>
+    <p class="section-sub-light">Fees are calculated on the weekly profit in units from published tips. Units and odds are clearly shown on every tip slip.</p>
+
+    <div class="pricing-table">
+      <div class="pricing-row header">
+        <div class="pricing-cell">Weekly profit (units)</div>
+        <div class="pricing-cell">Breakdown</div>
+        <div class="pricing-cell">Weekly fee</div>
+      </div>
+      <div class="pricing-row">
+        <div class="pricing-cell">Under 10U</div>
+        <div class="pricing-cell">Below threshold</div>
+        <div class="pricing-cell">$0</div>
+      </div>
+      <div class="pricing-row">
+        <div class="pricing-cell">10U – 14U</div>
+        <div class="pricing-cell">10U tier</div>
+        <div class="pricing-cell">$50</div>
+      </div>
+      <div class="pricing-row">
+        <div class="pricing-cell">15U – 19U</div>
+        <div class="pricing-cell">10U + 5U tier</div>
+        <div class="pricing-cell">$75</div>
+      </div>
+      <div class="pricing-row">
+        <div class="pricing-cell">20U and above</div>
+        <div class="pricing-cell">Capped at maximum</div>
+        <div class="pricing-cell">$100</div>
+      </div>
+    </div>
+
+    <div class="entry-block">
+      <div class="entry-block-text">
+        <h3>$50 to get started</h3>
+        <p>Covers your joining fee and your first week. After week one you're on the standard performance pricing above.</p>
+      </div>
+      <button class="btn-white-outline" onclick="openModal()">Join now</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── SECTION 4: TWITTER — white ── -->
+<div class="twitter-section">
+  <div class="twitter-inner">
+    <p class="section-label-dark">Track record</p>
+    <h2 class="section-title-dark">Fully transparent results.</h2>
+    <!-- UPDATE: replace href with your X/Twitter profile URL -->
+    <a href="https://twitter.com/YOURTWITTERHANDLE" target="_blank" rel="noopener" class="btn-x" aria-label="Follow on X">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.91-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+    </a>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <span class="footer-logo">Jorge's <span>Premium Tips</span></span>
+  <p>18+ only. Gamble responsibly. &copy; 2026 Jorge's Premium Tips. All rights reserved.</p>
+</footer>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-header">
+      <h2 id="modalTitle">Before you join</h2>
+      <p>Please read and accept the disclaimer and terms below.</p>
+      <button class="modal-close" onclick="closeModal()" aria-label="Close">&times;</button>
+    </div>
+
+    <div class="modal-body" id="modalBody">
+      <h3>Gambling Disclaimer</h3>
+      <p>This service provides betting tips for informational and entertainment purposes only. Tips represent the personal opinion of the service operator and do not constitute financial advice, investment advice, or a recommendation to place any particular wager.</p>
+      <p>Betting and wagering involves significant financial risk. <strong>Past performance is not indicative of future results.</strong> You are solely responsible for any bets you place, the amounts staked, and any financial outcomes — positive or negative — that result from acting on information provided through this service.</p>
+      <p>By joining this service you confirm you are <strong>18 years of age or older</strong>, that sports betting is legal in your state or territory, and that you are participating of your own free will.</p>
+      <p>If gambling is causing you or someone you know distress, free and confidential support is available. Call the <strong>Gambling Help Line on 1800 858 858</strong> or visit <strong>gamblinghelponline.org.au</strong>.</p>
+
+      <h3>Terms &amp; Conditions</h3>
+      <div class="terms-item">
+        <span class="terms-item-marker">—</span>
+        <p><strong>Joining fee.</strong> The $50 joining fee is non-refundable and covers your first week of membership.</p>
+      </div>
+      <div class="terms-item">
+        <span class="terms-item-marker">—</span>
+        <p><strong>Weekly fees.</strong> Fees are calculated on published tip slip performance only. Invoices are sent each Sunday night and must be paid by Thursday noon (AEST). Failure to pay by this deadline results in immediate removal from the service.</p>
+      </div>
+      <div class="terms-item">
+        <span class="terms-item-marker">—</span>
+        <p><strong>Activation timing.</strong> Members joining mid-week are activated from the following Monday.</p>
+      </div>
+      <div class="terms-item">
+        <span class="terms-item-marker">—</span>
+        <p><strong>Re-joining.</strong> Members removed for non-payment who wish to re-join must first pay all outstanding weekly fees in full. Only once the outstanding balance is cleared will a new joining fee be accepted. Re-admission is at the sole discretion of the service operator.</p>
+      </div>
+      <div class="terms-item">
+        <span class="terms-item-marker">—</span>
+        <p><strong>Tip sharing.</strong> Sharing, distributing, forwarding, or republishing tips in any form to any party is strictly prohibited and constitutes grounds for immediate permanent ban with no refund of any fees paid.</p>
+      </div>
+      <div class="terms-item">
+        <span class="terms-item-marker">—</span>
+        <p><strong>No guarantees.</strong> No representation is made that any member will profit from acting on tips provided. The service operator accepts no liability for any financial losses incurred.</p>
+      </div>
+      <div class="terms-item">
+        <span class="terms-item-marker">—</span>
+        <p><strong>Termination.</strong> The service operator reserves the right to suspend or terminate any membership at any time for breach of these terms. No refunds will be issued in these circumstances.</p>
+      </div>
+      <div class="terms-item">
+        <span class="terms-item-marker">—</span>
+        <p><strong>Acceptance.</strong> Payment of the joining fee constitutes full acceptance of all terms on this page. By ticking the box below, you confirm you have read, understood, and agreed to these terms. This is recorded as your acknowledgement. These terms may be updated at any time; continued membership constitutes acceptance of updated terms.</p>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <div class="checkbox-row">
+        <input type="checkbox" id="agreeCheck" onchange="toggleProceed()">
+        <label for="agreeCheck">I have read and agree to the disclaimer and terms &amp; conditions above. I confirm I am <strong>18 years of age or older</strong> and that sports betting is legal in my jurisdiction.</label>
+      </div>
+      <!-- UPDATE: replace href with your Telegram bot link e.g. https://t.me/YourBotName -->
+      <a href="https://t.me/YOURTELEGRAMBOT" target="_blank" rel="noopener" class="btn-proceed" id="proceedBtn">Proceed to Telegram &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<script>
+function openModal() {
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  document.getElementById('agreeCheck').checked = false;
+  document.getElementById('proceedBtn').classList.remove('active');
+  setTimeout(() => { document.getElementById('modalBody').scrollTop = 0; }, 10);
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+function toggleProceed() {
+  document.getElementById('proceedBtn').classList.toggle('active', document.getElementById('agreeCheck').checked);
+}
+
+// Scroll-triggered step animations
+const stepItems = document.querySelectorAll('.step-item');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+stepItems.forEach((el, i) => {
+  el.style.transitionDelay = `${i * 0.13}s`;
+  observer.observe(el);
+});
+</script>
+</body>
+</html>
